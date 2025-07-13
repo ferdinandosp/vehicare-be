@@ -1,0 +1,50 @@
+### GraphQL API Test File for Vehicare
+
+@url = http://localhost:5006/graphql
+
+### 1. Register a new user
+POST {{url}}
+Content-Type: application/json
+
+{
+  "query": "mutation RegisterUser($input: RegisterInput!) { register(input: $input) { success user { id email firstName lastName createdAt } error } }",
+  "variables": {
+    "input": {
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  }
+}
+
+### 2. Login user
+POST {{url}}
+Content-Type: application/json
+
+{
+  "query": "mutation LoginUser($input: LoginInput!) { login(input: $input) { success token user { id email firstName lastName lastLoginAt } error } }",
+  "variables": {
+    "input": {
+      "email": "john.doe@example.com",
+      "password": "password123"
+    }
+  }
+}
+
+### 3. Get API status (no authentication required)
+POST {{url}}
+Content-Type: application/json
+
+{
+  "query": "query GetStatus { status }"
+}
+
+### 4. Get current user (requires authentication - replace with actual token from login)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "query GetMe { me { id email firstName lastName createdAt lastLoginAt isActive } }"
+}

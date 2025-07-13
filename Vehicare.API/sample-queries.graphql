@@ -1,0 +1,59 @@
+# Sample GraphQL operations for the Vehicare API
+
+## Register a new user
+mutation RegisterUser {
+  register(input: {
+    email: "john.doe@example.com"
+    password: "password123"
+    firstName: "John"
+    lastName: "Doe"
+  }) {
+    success
+    user {
+      id
+      email
+      firstName
+      lastName
+      createdAt
+      isActive
+    }
+    error
+  }
+}
+
+## Login
+mutation LoginUser {
+  login(input: {
+    email: "john.doe@example.com"
+    password: "password123"
+  }) {
+    success
+    token
+    user {
+      id
+      email
+      firstName
+      lastName
+      lastLoginAt
+    }
+    error
+  }
+}
+
+## Get current user (requires authentication)
+query GetMe {
+  me {
+    id
+    email
+    firstName
+    lastName
+    createdAt
+    lastLoginAt
+    isActive
+  }
+}
+
+## Check API status
+query GetStatus {
+  status
+}
