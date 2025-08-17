@@ -1,13 +1,13 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore;
 using System.Text;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Vehicare.API.Data;
-using Vehicare.API.Services;
-using Vehicare.API.GraphQL.Queries;
 using Vehicare.API.GraphQL.Mutations;
+using Vehicare.API.GraphQL.Queries;
 using Vehicare.API.GraphQL.Types;
+using Vehicare.API.Services;
 using Vehicare.API.Validators;
 
 namespace Vehicare.API.Configuration;

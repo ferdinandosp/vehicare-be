@@ -1,8 +1,8 @@
+using System.Security.Claims;
 using HotChocolate;
+using Vehicare.API.GraphQL.Inputs;
 using Vehicare.API.Models;
 using Vehicare.API.Services;
-using Vehicare.API.GraphQL.Inputs;
-using System.Security.Claims;
 
 namespace Vehicare.API.GraphQL.Mutations;
 

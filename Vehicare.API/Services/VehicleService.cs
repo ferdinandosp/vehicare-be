@@ -1,5 +1,5 @@
-using Vehicare.API.Models;
 using Vehicare.API.GraphQL.Inputs;
+using Vehicare.API.Models;
 
 namespace Vehicare.API.Services;
 

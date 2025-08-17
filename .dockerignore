@@ -1,0 +1,57 @@
+# Ignore git files
+.git
+.gitignore
+.gitattributes
+.github
+
+# Ignore Docker files
+Dockerfile
+.dockerignore
+
+# Ignore IDE files
+.vs
+.vscode
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore build output
+bin/
+obj/
+out/
+
+# Ignore test results
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore NuGet packages
+packages/
+*.nupkg
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore documentation files
+*.md
+docs/
+
+# Ignore database files
+*.db
+*.sqlite
+*.sqlite3

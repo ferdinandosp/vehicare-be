@@ -1,7 +1,7 @@
 using HotChocolate;
+using Vehicare.API.GraphQL.Inputs;
 using Vehicare.API.Models;
 using Vehicare.API.Services;
-using Vehicare.API.GraphQL.Inputs;
 
 namespace Vehicare.API.GraphQL.Mutations;
 

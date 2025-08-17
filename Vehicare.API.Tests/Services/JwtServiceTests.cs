@@ -1,7 +1,7 @@
-using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 using Vehicare.API.Models;
 using Vehicare.API.Services;
 using Xunit;

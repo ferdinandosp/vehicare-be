@@ -1,7 +1,7 @@
+using System.Security.Claims;
 using HotChocolate;
 using Vehicare.API.Models;
 using Vehicare.API.Services;
-using System.Security.Claims;
 
 namespace Vehicare.API.GraphQL.Queries;
 

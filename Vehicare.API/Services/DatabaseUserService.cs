@@ -1,8 +1,8 @@
+using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 using Vehicare.API.Data;
-using Vehicare.API.Models;
 using Vehicare.API.GraphQL.Inputs;
-using BCrypt.Net;
+using Vehicare.API.Models;
 
 namespace Vehicare.API.Services;
 

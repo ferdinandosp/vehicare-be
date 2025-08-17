@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Vehicare.API.Data;
-using Vehicare.API.Models;
 using Vehicare.API.GraphQL.Inputs;
+using Vehicare.API.Models;
 
 namespace Vehicare.API.Services;
 
