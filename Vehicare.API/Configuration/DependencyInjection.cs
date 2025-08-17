@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 using FluentValidation;
+using Vehicare.API.Data;
 using Vehicare.API.Services;
 using Vehicare.API.GraphQL.Queries;
 using Vehicare.API.GraphQL.Mutations;
@@ -14,9 +16,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Register application services
-        services.AddSingleton<IUserService, UserService>();
-        services.AddSingleton<IJwtService, JwtService>();
+        // Add DbContext
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+        // Register application services (using database implementations)
+        services.AddScoped<IUserService, DatabaseUserService>();
+        services.AddScoped<IJwtService, JwtService>();
+        services.AddScoped<IVehicleService, DatabaseVehicleService>();
 
         // Register validators
         services.AddValidatorsFromAssemblyContaining<RegisterInputValidator>();
@@ -56,13 +63,23 @@ public static class DependencyInjection
     {
         services
             .AddGraphQLServer()
-            .AddQueryType<UserQuery>()
-            .AddMutationType<UserMutation>()
+            .AddQueryType()
+                .AddTypeExtension<UserQuery>()
+                .AddTypeExtension<VehicleQuery>()
+            .AddMutationType()
+                .AddTypeExtension<UserMutation>()
+                .AddTypeExtension<VehicleMutation>()
             .AddType<UserType>()
+            .AddType<VehicleType>()
             .AddType<LoginInputType>()
             .AddType<RegisterInputType>()
+            .AddType<CreateVehicleInputType>()
+            .AddType<UpdateVehicleInputType>()
             .AddType<LoginPayloadType>()
-            .AddType<RegisterPayloadType>();
+            .AddType<RegisterPayloadType>()
+            .AddType<CreateVehiclePayloadType>()
+            .AddType<UpdateVehiclePayloadType>()
+            .AddType<DeleteVehiclePayloadType>();
 
         return services;
     }

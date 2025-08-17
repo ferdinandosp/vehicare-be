@@ -48,3 +48,73 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_T
 {
   "query": "query GetMe { me { id email firstName lastName createdAt lastLoginAt isActive } }"
 }
+
+### 5. Create a vehicle (requires authentication - replace with actual token)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "mutation CreateVehicle($input: CreateVehicleInput!) { createVehicle(input: $input) { success vehicle { id make model year vin licensePlate currentMileage color purchaseDate createdAt } error } }",
+  "variables": {
+    "input": {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2022,
+      "vin": "1HGBH41JXMN109186",
+      "licensePlate": "ABC123",
+      "currentMileage": 15000,
+      "color": "Silver",
+      "purchaseDate": "2022-01-15T00:00:00.000Z"
+    }
+  }
+}
+
+### 6. Get my vehicles (requires authentication)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "query GetMyVehicles { myVehicles { id make model year vin licensePlate currentMileage color purchaseDate createdAt updatedAt } }"
+}
+
+### 7. Get specific vehicle (requires authentication)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "query GetVehicle($id: Int!) { vehicle(id: $id) { id make model year vin licensePlate currentMileage color purchaseDate createdAt updatedAt } }",
+  "variables": {
+    "id": 1
+  }
+}
+
+### 8. Update vehicle (requires authentication)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "mutation UpdateVehicle($input: UpdateVehicleInput!) { updateVehicle(input: $input) { success vehicle { id make model currentMileage color updatedAt } error } }",
+  "variables": {
+    "input": {
+      "id": 1,
+      "currentMileage": 16500,
+      "color": "Blue"
+    }
+  }
+}
+
+### 9. Delete vehicle (requires authentication)
+POST {{url}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.REPLACE_WITH_ACTUAL_TOKEN
+
+{
+  "query": "mutation DeleteVehicle($vehicleId: Int!) { deleteVehicle(vehicleId: $vehicleId) { success deletedVehicleId error } }",
+  "variables": {
+    "vehicleId": 1
+  }
+}

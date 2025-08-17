@@ -57,3 +57,102 @@ query GetMe {
 query GetStatus {
   status
 }
+
+## ========== VEHICLE OPERATIONS ==========
+
+## Create a new vehicle (requires authentication)
+mutation CreateVehicle {
+  createVehicle(input: {
+    make: "Toyota"
+    model: "Camry"
+    year: 2022
+    vin: "1HGBH41JXMN109186"
+    licensePlate: "ABC123"
+    currentMileage: 15000
+    color: "Silver"
+    purchaseDate: "2022-01-15T00:00:00.000Z"
+  }) {
+    success
+    vehicle {
+      id
+      make
+      model
+      year
+      vin
+      licensePlate
+      currentMileage
+      color
+      purchaseDate
+      createdAt
+      updatedAt
+    }
+    error
+  }
+}
+
+## Get all my vehicles (requires authentication)
+query GetMyVehicles {
+  myVehicles {
+    id
+    make
+    model
+    year
+    vin
+    licensePlate
+    currentMileage
+    color
+    purchaseDate
+    createdAt
+    updatedAt
+  }
+}
+
+## Get specific vehicle by ID (requires authentication)
+query GetVehicle {
+  vehicle(id: 1) {
+    id
+    make
+    model
+    year
+    vin
+    licensePlate
+    currentMileage
+    color
+    purchaseDate
+    createdAt
+    updatedAt
+  }
+}
+
+## Update a vehicle (requires authentication)
+mutation UpdateVehicle {
+  updateVehicle(input: {
+    id: 1
+    currentMileage: 16500
+    color: "Blue"
+  }) {
+    success
+    vehicle {
+      id
+      make
+      model
+      year
+      vin
+      licensePlate
+      currentMileage
+      color
+      purchaseDate
+      updatedAt
+    }
+    error
+  }
+}
+
+## Delete a vehicle (requires authentication)
+mutation DeleteVehicle {
+  deleteVehicle(vehicleId: 1) {
+    success
+    deletedVehicleId
+    error
+  }
+}

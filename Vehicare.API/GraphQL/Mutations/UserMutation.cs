@@ -5,6 +5,7 @@ using Vehicare.API.GraphQL.Inputs;
 
 namespace Vehicare.API.GraphQL.Mutations;
 
+[ExtendObjectType("Mutation")]
 public class UserMutation
 {
     public async Task<LoginPayload> LoginAsync(

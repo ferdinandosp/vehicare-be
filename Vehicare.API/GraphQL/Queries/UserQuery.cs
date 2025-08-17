@@ -5,6 +5,7 @@ using System.Security.Claims;
 
 namespace Vehicare.API.GraphQL.Queries;
 
+[ExtendObjectType("Query")]
 public class UserQuery
 {
     private const string ApiStatus = "API is running";
